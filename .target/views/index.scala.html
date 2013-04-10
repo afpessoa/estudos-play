@@ -1,5 +1,6 @@
-@(projects: List[Project], todoTasks: List[Task])
-@main(projects) {
+@(projects: List[Project], todoTasks: List[Task], user: User) 
+
+@main(projects, user) {
 
 	<header>
 		<hgroup>
@@ -7,9 +8,9 @@
 			<h2>Tasks over all projects</h2>
 		</hgroup>
 	</header>
-
-	<article  class="tasks">
-		@todoTasks.groupBy(_.project).map {
+	
+	<article class="tasks">
+		@todoTasks.groupBy(_.project).map { 
 			case (project, tasks) => {
 				<div class="folder" data-folder-id="@project.id">
 					<header>
